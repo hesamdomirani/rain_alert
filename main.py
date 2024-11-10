@@ -6,6 +6,7 @@ from twilio.rest import Client
 load_dotenv()
 api_key = os.getenv('API_KEY')
 auth_token = os.getenv("AuthToken")
+account_sid= os.getenv("Account_Sid")
 
 OWM_Endpoint = "https://api.openweathermap.org/data/2.5/forecast"
 LATITUDE = 50.316540
@@ -23,10 +24,10 @@ weather_for_12_hours = weather_data_total["list"]
 code_status = [item["weather"][0]["id"] for item in weather_for_12_hours]
 will_rain = False
 for code in code_status:
-    if code < 900:
+    if code < 700:
         will_rain=True
 if will_rain:
-    account_sid = 'ACa391b5b2cdb03d246bac190be0e60e7a'
+    account_sid = account_sid
     auth_token = auth_token
     client = Client(account_sid, auth_token)
 
