@@ -8,7 +8,7 @@ api_key = os.getenv('API_KEY')
 auth_token = os.getenv("AuthToken")
 account_sid= os.getenv("Account_Sid")
 
-OWM_Endpoint = "https://api.openweathermap.org/data/2.5/forecast"
+OWM_Endpoint = os.getenv("OWM_Endpoint")
 LATITUDE = 50.316540
 LONGITUDE = 11.913620
 
@@ -32,8 +32,8 @@ if will_rain:
     client = Client(account_sid, auth_token)
 
     message = client.messages.create(
-    from_='+12517327108',
+    from_=os.getenv("MY_VIRTUELL_NUMBER"),
     body='It will be Rainy,Bring Your Umbrella!!!',
-    to='+491783997382'
+    to= os.getenv("MY_ACTUELL_NUMBER")
 )
     print(message.sid)
